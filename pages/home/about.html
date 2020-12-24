@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="~/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202009071529" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        .layui-colla-title{
+            background-color: white !important;
+        }
+    </style>
+</head>
+
+<body style="margin-top:0px !important">
+    <div class="layui-container ">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8" style="width: 100% !important;">
+                <div class="fly-panel">
+                    <div class="layui-collapse" lay-filter="test">
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">关于本站</h2>
+                            <div class="layui-colla-content" id="about">
+                                <div class="bg">
+                                    <div class="bg-li">
+                                        <p class="p-title">名称：</p>
+                                        <p class="p-content">天天博客</p>
+                                    </div>
+                                    <div class="bg-li">
+                                        <p class="p-title">网址：</p>
+                                        <p class="p-content">http://www.ttblog.site</p>
+                                    </div>
+                                    <div class="bg-li">
+                                        <p class="p-title">描述：</p>
+                                        <p class="p-content">一个后端程序猿在家搭建的博客网站，用来写博客，记录日常生活的站点</p>
+                                    </div>
+                                    <div class="bg-li">
+                                        <p class="p-title">技术：</p>
+                                        <p class="p-content">
+                                            随着微服务的火热，DDD(领域驱动设计模式)思想风起云涌，冲击着整个软件生态系统。闲暇之余，学习并且用DDD搭建了之个项目。
+                                            这个项目由.net
+                                            core3.1作为后端，layui作为前端搭建的前后端分离项目，使用轻量级ORM:dapper进行DB处理。其中，mysql用来存储数据，redis用来缓存数据，<a
+                                                style="color:#FF5722"
+                                                href="https://docs.microsoft.com/zh-cn/aspnet/core/signalr/introduction?view=aspnetcore-3.1"
+                                                target="_blank">SignalR</a>进行实时网络通信，系统主要有这三点支撑运行，服务器采用腾讯云的学生机centos服务器。（目前在思考放弃
+                                            DDD模式，加上EFCore，改为传统的3层，有些东西只要自己试了才知道适不适合）
+                                        </p>
+                                    </div>
+                                    <div class="bg-li">
+                                        <p class="p-title">GitHub：</p>
+                                        <p class="p-content">
+                                            BlogApi:<a style="color:#FF5722" href="https://github.com/Hansdas/BlogH.git"
+                                                target="_blank">https://github.com/Hansdas/BlogH.git</a>&nbsp;&nbsp;
+                                            BlogUI:<a style="color:#FF5722" href="https://github.com/Hansdas/BlogUI.git"
+                                                target="_blank">https://github.com/Hansdas/BlogUI.git</a>
+                                    </div>
+                                    <div class="bg-li">
+                                        <p class="p-title">联系方式：</p>
+                                        <p class="p-content">
+                                            微信：h3248996258&nbsp;&nbsp;
+                                            QQ：3248996258
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">关于作者</h2>
+                            <div class="layui-colla-content" style="height:700px" id="author">
+                                <div class="author-info">
+                                    <div class="left">
+                                        <fieldset class="layui-elem-field">
+                                            <legend><img src="/images/touxiang.jpg"></legend>
+                                            <div class="layui-field-box">
+                                                <div class="name">愿被世界温柔以待</div>
+                                                <div class="au-li">一枚程序员</div>
+                                                <div class="au-li">94/05/21，男，湖北天门</div>
+                                                <div class="au-li">.net开发，熟悉java语言，略懂前端</div>
+                                                <div class="au-li">老宅男，不爱出门</div>
+                                                <div class="au-li">爱好打dota2，技术属于鱼塘里的小鱼</div>
+                                                <div class="au-li"><a style="color:#FF5722"
+                                                        href="https://www.douyu.com/3149221"
+                                                        target="_blank">业余直播间，纯属乐趣</a>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="right">
+                                        <div class="li-p">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1994年5月21日，带着双子座的性格，出生于湖北天门的一个村庄里，开始了这一生的、漫漫的、有去无回的旅途。
+                                        </div>
+                                        <div class="li-p">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记忆中是16年踏入社会的，因为在不爱上课，所以只好读了三年的专科。刚毕业的时候，是有那么点不舍与不适应，甚至工作了一年了，和室友在寝室打游戏，
+                                            在外面聚餐吃饭也经常梦到，当然现在很久没梦到了，但是，那个场景却很怀念，仿佛历历在目。出了校门，就再也回不去了，不可能再像以前那样任性，最重要的是：money。
+                                            你已经踏入社会了，不可能再向家里衣来伸手，饭来张口了，但是自己又什么也不会，于是自己就在网上买了本《C#入门基础》，从此白天面试，晚上周末学习看书，最后算是找到
+                                            工作了。我感觉面试的那段时间，我体会到了什么叫做风吹雨打，因为懂得艰辛，所以我现在才会不断努力。正像我的高中历史老师说的：“今天你摔了一跤，这是
+                                            历史的必然性”，可能历史想叫您知道为啥摔这一跤吧！
+                                        </div>
+                                        <div class="li-p">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp现在已经工作了3年了，说学到了什么却说不出来，可能那玩意只可意会不可言传吧。并不像别人说的那样工作几年应该变得油嘴滑舌，相反自己还是比较宅，比较老实，
+                                            不像别人那样能说会道，有时候真的很羡慕那些在人场里呱呱不停的说。但是唯一学会的就是要有一个理想：励志成为架构师，从此我感觉我找到了当程序员的追求与梦想，以便我能坚持走下去。
+                                        </div>
+                                        <div class="li-p">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp今年已经27岁了，时间过得好快啊，太快了，不是好事，父母也老了，正如那首歌所唱“就让时光慢些吧
+                                            不要再让你变老了
+                                            我愿用我一切换你岁月长留”，同时自己也老了！一个人可以选择碌碌无为，但却不能因为自己的
+                                            碌碌无为而怨天尤人，抱怨社会，自己走的路，绝不要后悔！不过，目前最大的愿望就是能让自己有一个避风港，不在孤寂无聊，不羡慕秀恩爱的情侣，只羡慕能一起白头偕老的老夫老妻，共同
+                                            面对未来。
+                                        </div>
+                                        <div class="li-p">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp我也不知道以后会是什么样子的，就像旅途一样，不知道后面是什么样子，但是想回去看以前的却没有回去的路，那些之前的只能存在与记忆里了。
+                                        </div>
+                                        <div class="li-p">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp时光荏苒，逝者如斯夫，不舍昼夜，祝愿自己以后的旅途充满着美好与温暖！
+                                        </div>
+                                        <div class="li-p right-date">
+                                            2020/06/01 21:49
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">留言</h2>
+                            <div class="layui-colla-content" id="leaveMessage">
+                                <div class="layui-form leave-message">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">联系邮箱</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" style="float: left;width: 18%;" id="email"
+                                                autocomplete="off" class="layui-input">
+                                            <span class="info-span">选填</span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item layui-form-text">
+                                        <label class="layui-form-label">留言内容*</label>
+                                        <div class="layui-input-block">
+                                            <textarea id="content" style="width: 800px"
+                                                class="layui-textarea"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button class="layui-btn" id="leaveMessage" lay-submit>留言</button>
+                                            <span class="error-span"></span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item" style="width: 925px !important;">
+                                        <div class="layui-input-block whisper-content">
+                                            <div class="tip">留言列表</div>
+                                            <ul class="layui-timeline" style="margin-top: 11px" id="time-axis"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/html" id="article-list-script">
+        {{# layui.each(d.list,function(index,item){}}
+        <li>
+            <!-- <a href="user/home.html" class="fly-avatar">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+            </a> -->
+            <h2>
+                <a class="layui-badge">{{item.articleType}}</a>
+                <a href="../article/detail.html?id={{item.id}}" target="_blank">{{item.title}}</a>
+            </h2>
+            <p>{{item.contentBriefly}}</p>
+            <div class="fly-list-info">
+                <a href="user/home.html" link>
+                    <cite>{{item.authorName}}</cite>
+                </a>
+                <span>{{item.createDate}}</span>
+                <span class="fly-list-nums">
+                    <i class="iconfont icon-pinglun1" title="留言"></i>{{ item.reviewCount}}
+                    <i class="layui-icon layui-icon-read" title="阅读"></i>{{item.readCount}}
+                    <i class="layui-icon layui-icon-praise" title="点赞"></i>{{item.praiseCount}}
+                </span>
+            </div>
+        </li>
+        {{# }); }}
+    </script>
+        <script id="hot-list-script" type="text/html">
+        {{# layui.each(d.list,function(index,item){}}
+        <dd>
+            <a target="_blank" href="../article/detail.html?id={{item.id}}">{{item.title}}</a>
+            <span><i class="iconfont icon-pinglun1"></i> {{item.readCount}}</span>
+          </dd>
+        {{# }); }}
+    </script>
+        <script src="/lib/layui/layui.js"></script>
+        <script src="/js/jquery/jquery.min.js"></script>
+        <script src="/js/const.js"></script>
+        <script src="/js/utils.js"></script>
+        <script src="/js/modules/about.js"></script>
+</body>
+
+</html>

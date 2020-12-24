@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>欢迎！愿你安好</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="~/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        .layui-flow-more a cite {
+            padding: 0px 10px;
+            background-color: #5FB878;
+            color: white;
+            height: 27px;
+            width: 50px;
+            font-size:10px
+        }
+    </style>
+</head>
+<body style="margin-top:0px !important">
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="fly-panel">
+                    <div class="fly-panel-title fly-filter">
+                        <a>随笔</a>
+                        <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right" id="LAY_goSignin" style="color: #FF5722;">去签到</a>
+                    </div>
+                    <ul class="fly-list" id="article-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+
+                <div class="fly-panel">
+                    <h3 class="fly-panel-title">微语</h3>
+                    <div class="fly-panel-main fly-list-static">
+                        <textarea id="whisperContent" lay-verify="content" class="layui-textarea"></textarea>
+                        <button style="width:100%;background-color:#5FB878 !important" class="layui-btn" title="发表" data-type="addWhisper">
+                            <i class="layui-icon layui-icon-release"></i>
+                        </button>
+                        <div id="whisper-list" style="min-height:67px">
+                        </div>
+                        <div class="layui-flow-more">
+                            <a href="javascript:;" onclick="loadMore()"><cite>加载更多</cite></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="fly-panel fly-signin">
+                    <div class="fly-panel-title">
+                        视频分享
+                    </div>
+                    <div class="fly-panel-main fly-signin-main">
+                    </div>
+                </div>
+
+                <div class="fly-panel fly-rank fly-rank-reply" id="LAY_replyRank">
+                    <h3 class="fly-panel-title">友情链接<a>111</a></h3>
+                    <dl>
+                        <!--<i class="layui-icon fly-loading">&#xe63d;</i>-->
+                        <dd>
+                            <a href="https://www.cnblogs.com/" target="_blank">
+                                <img src="https://www.cnblogs.com/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM"><i>博客园</i>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="https://www.oschina.net/" target="_blank">
+                                <img src="https://static.oschina.net/new-osc/img/logo_new.svg"><i>开源中国</i>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="https://www.tanj.com.cn/" target="_blank">
+                                <img src="https://www.tanj.com.cn/public/img/logo2.png"><i>TanJie</i>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="https://github.com/Hansdas/surging" target="_blank">
+                                <i>微服务Surging</i>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="https://blog.igeekfan.cn/" target="_blank">
+                                <img src="https://miao.su/images/2019/06/12/mmexport1551804477516c39f2.jpg"><i>天上有木有明月</i>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="https://www.rinbowli.cn/" target="_blank">
+                                <img src="https://www.rinbowli.cn/img/touxiang.0544b82b.jpg"><i>rinbowli</i>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="https://wnag.com.cn/" target="_blank">
+                                <img src="https://image.wnag.com.cn/2020/02/18/8e34bd27ab66b.jpg"><i>可定博客</i>
+                            </a>
+                        </dd>                      
+                    </dl>
+                    <div style="text-align: center;">
+                        <button class="layui-btn" style="background-color:#5FB878 !important" onclick="applyFriendLinks()">申请友链</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="article-list-script">
+        {{# layui.each(d.list,function(index,item){}}
+        <li>
+            <!-- <a href="user/home.html" class="fly-avatar">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+            </a> -->
+            <h2>
+                <a class="layui-badge">{{item.articleType}}</a>
+                <a href="../article/detail.html?id={{item.id}}" target="_blank">{{item.title}}</a>
+            </h2>
+            <a href="../article/detail.html?id={{item.id}}" target="_blank"><p>{{item.contentBriefly}}</p></a>
+            <div class="fly-list-info">
+                <a href="user/home.html" link>
+                    <cite>{{item.authorName}}</cite>
+                </a>
+                <span>{{item.createDate}}</span>
+            </div>
+        </li>
+        {{# }); }}
+    </script>
+    <script type="text/html" id="whisper-list-script">
+        {{#layui.each(d.list,function(index,item){}}
+        <div class="whisper-item">
+            <div>
+                <a class="author" href="../user/user-home.html?account={{item.account}}" target='_blank'>{{item.accountName}}</a>
+                <p style="font-size:13px">：{{item.content}}</p>
+            </div>
+            <p class="date">{{item.createDate}}<a href="javascript:;" style="color: #9b9b9b !important">留言({{item.commentCount}})</a></p>
+        </div>
+        <hr>
+        {{# }); }}
+    </script>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/signalr.js"></script>
+    <script src="/js/const.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/modules/square.js"></script>
+</body>
+</html>

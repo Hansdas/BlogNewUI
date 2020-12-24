@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="~/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202009071529" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        .layui-flow-more a cite {
+            padding: 0px 10px;
+            background-color: #009688;
+            color: white;
+            height: 27px;
+            width: 50px;
+            font-size: 10px
+        }
+    </style>
+</head>
+
+<body style="margin-top:0px !important">
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="fly-panel">
+                    <div class="fly-panel-title fly-filter" style="display:flex">
+                        <a>随笔</a>
+                        <span style="display:flex;margin-left: 140px;margin-top: 11px;">
+                            <input class="layui-input" id="fullText" placeholder="至少输入两个字符" type="text">
+                            <button id="btnSearch" class="layui-btn search" title="搜索">
+                                <i class="layui-icon">&#xe615;</i>
+                            </button>
+                            <a href="../article/add.html" target="_blank" class="layui-btn" title="写一写">
+                                <i class="layui-icon">&#xe642;</i>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="layui-tab layui-tab-brief" id="tab" lay-filter="tab-article">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this" lay-id="0">全部</li>
+                            <li lay-id="1">散文礼记</li>
+                            <li lay-id="2">韶华追忆</li>
+                            <li lay-id="3">编程世界</li>
+                            <li lay-id="4">娱乐竞技</li>
+                            <li lay-id="5">趣味百态</li>
+                        </ul>
+                    </div>
+                    <ul class="fly-list" id="article-list" style="min-height: 100px;">
+                    </ul>
+                    <div id="page" style="text-align: center;"></div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <dl class="fly-panel fly-list-one">
+                    <dt class="fly-panel-title">最多浏览</dt>
+                    <div id="hot-list">
+
+                    </div>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="article-list-script">
+        {{# layui.each(d.list,function(index,item){}}
+        <li>
+            <!-- <a href="user/home.html" class="fly-avatar">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+            </a> -->
+            <h2>
+                <a class="layui-badge">{{item.articleType}}</a>
+                <a href="../article/detail.html?id={{item.id}}" target="_blank">{{item.title}}</a>
+            </h2>
+            <p>{{item.contentBriefly}}</p>
+            <div class="fly-list-info">
+                <a href="user/home.html" link>
+                    <cite>{{item.authorName}}</cite>
+                </a>
+                <span>{{item.createDate}}</span>
+                <span class="fly-list-nums">
+                    <i class="iconfont icon-pinglun1" title="留言"></i>{{ item.reviewCount}}
+                    <i class="layui-icon layui-icon-read" title="阅读"></i>{{item.readCount}}
+                    <i class="layui-icon layui-icon-praise" title="点赞"></i>{{item.praiseCount}}
+                </span>
+            </div>
+        </li>
+        {{# }); }}
+    </script>
+    <script id="hot-list-script" type="text/html">
+        {{# layui.each(d.list,function(index,item){}}
+        <dd>
+            <a target="_blank" href="../article/detail.html?id={{item.id}}">{{item.title}}</a>
+            <span><i class="iconfont icon-pinglun1"></i> {{item.readCount}}</span>
+          </dd>
+        {{# }); }}
+    </script>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/const.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/modules/article/article.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+.loader {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    padding: 0px;
+    border-radius: 100%;
+    border: 5px solid;
+    border-top-color: #00a67c;
+    border-bottom-color: rgba(0,0,0, 0.1);
+    border-left-color: #00a67c;
+    border-right-color: rgba(0,0,0, 0.1);
+    -webkit-animation: loader 1s ease-in-out infinite;
+    animation: loader 1s ease-in-out infinite;
+ }
+ @keyframes loader {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+ }
+ @-webkit-keyframes loader {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+ }
+
+ /* 定义keyframe动画，命名为blink */
+@keyframes blink {
+   0% {
+       opacity: 1;
+   }
+
+   50% {
+       opacity: 1;
+   }
+
+   50.01% {
+       opacity: 0;
+   }
+
+   100% {
+       opacity: 0;
+   }
+}
+
+/* 添加兼容性前缀 */
+@-webkit-keyframes blink {
+   0% {
+       opacity: 1;
+   }
+
+   100% {
+       opacity: 0;
+   }
+}
+
+@-moz-keyframes blink {
+   0% {
+       opacity: 1;
+   }
+
+   100% {
+       opacity: 0;
+   }
+}
+
+@-ms-keyframes blink {
+   0% {
+       opacity: 1;
+   }
+
+   100% {
+       opacity: 0;
+   }
+}
+
+@-o-keyframes blink {
+   0% {
+       opacity: 1;
+   }
+
+   100% {
+       opacity: 0;
+   }
+}
+
+/* 定义blink类*/
+.blink {
+   animation: blink 1s linear infinite;
+   /* 其它浏览器兼容性前缀 */
+   -webkit-animation: blink 1s linear infinite;
+   -moz-animation: blink 1s linear infinite;
+   -ms-animation: blink 1s linear infinite;
+   -o-animation: blink 1s linear infinite;
+}

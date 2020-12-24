@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>欢迎！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="ttblog,博客,个人博客,个人站点">
+    <meta name="description"
+        content="此项目用于个人学习，开源代码，框架没有过多引用第三方框架，易于学习。 这个项目由.net core3.1作为后端，layui作为前端，使用轻量级ORM:dapper进行DB处理">
+    <link rel="icon" href="/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="fly-header layui-bg-black">
+        <div class="layui-container">
+            <a class="fly-logo" href="/">
+                <img src="/images/lg.png" />
+            </a>
+            <ul class="layui-nav fly-nav layui-hide-xs">
+                <li class="layui-nav-item layui-this">
+                    <a target="_blank" href="index.html?op=leavemessage"><i class="iconfont icon-jiaoliu"></i>留言</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a target="_blank" href="https://github.com/Hansdas/Blog_New" target="_blank"><i class="iconfont icon-iconmingxinganli"></i>github</a>
+                </li>
+            </ul>
+
+            <ul class="layui-nav fly-nav-user">
+
+                <!-- 未登入的状态 -->
+                <div id="no-login-hide" style="display: none;">
+                    <li class="layui-nav-item">
+                        <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="/login/login.html">登入</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="user/reg.html">注册</a>
+                    </li>
+                    <li class="layui-nav-item layui-hide-xs">
+                        <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入"
+                            class="iconfont icon-qq"></a>
+                    </li>
+                    <li class="layui-nav-item layui-hide-xs">
+                        <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})"
+                            title="微博登入" class="iconfont icon-weibo"></a>
+                    </li>
+                </div>
+                <!-- 登入后的状态 -->
+                <div id="login-show" style="display: none;">
+                    <li class="layui-nav-item">
+                        <a class="fly-nav-avatar" href="javascript:;">
+                            <i class="layui-badge fly-badge-vip layui-hide-xs" title="我的消息">
+                                <span class="blink" id="notice"></span>
+                                </i>
+                            <img id="photo" src="">
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a id="myTidings" href=""><i class="iconfont icon-tongzhi"style="top: 4px;"></i>我的消息</a>
+                            </dd>
+                            <dd><a href="javascript:;" onclick="tab(5)"><i class="layui-icon"
+                                        style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                            <hr style="margin: 5px 0;">
+                            <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
+                        </dl>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="fly-panel fly-column">
+        <div class="layui-container">
+            <ul class="layui-clear">
+                <li id="square" class="layui-hide-xs layui-this"><a href="javascript:;" onclick="tab(0)">首页</a></li>
+                <li id="article"><a href="javascript:;" onclick="tab(1)">随笔</a></li>
+                <li id="time"><a href="javascript:;" onclick="tab(2)">时间</a></li>
+                <li><a href="javascript:;" onclick="tab(0)">视频</a></li>
+                <li id="about"><a href="javascript:;" onclick="tab(4)">关于</a></li>
+                <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+            </ul>
+        </div>
+    </div>
+    <iframe id="content" frameborder=0 width="100%" style="margin-top:59px" scrolling=no marginwidth='0'
+        marginheight='0' noresize="noresize" src="/home/square.html"></iframe>
+    <div class="fly-footer">
+        <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/"
+                target="_blank">layui.com 出品</a></p>
+        <p>
+            <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
+            <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
+            <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+        </p>
+    </div>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/signalr.js"></script>
+    <script src="/js/const.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+        layui.use('element', function () {
+            var element = layui.element;
+            setIframeHeight('content');
+            var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:5004/chatHub").build();
+            connection.on('ReviceMesage', function (message) {
+                var oldNum = parseInt($('.notice').html());
+                var newNum = parseInt(message.data);
+                $('.notice').html(newNum);
+                if (oldNum < newNum) {
+                    $('.notice').addClass('blink');
+                }
+            });
+            $.ajax({
+                url: api + '/user/loginuser',
+                type: 'get',
+                dataType: 'json',
+                headers: {
+                    loginToken: localStorage.getItem('loginToken')
+                },
+                success: function (response) {
+                    if (response.code == '200') {
+                        $("#no-login-hide").hide();
+                        $("#login-show").show();
+                        $("#photo").attr('src', response.data.photo);
+                        $('#notice').html(response.data.count);
+                        $('#myTidings').html("<i class='iconfont icon-tongzhi'style=/top: 4px;''></i>我的消息("+response.data.count+")");
+                        connection.start().then(function () {
+                            connection.invoke('SetConnectionMaps', response.data.account);
+                        });
+                    } else {
+                        $("#no-login-hide").show();
+                        $("#user").hide();
+                    }
+                }
+            });
+        });
+        function tab(i) {
+            $('.layui-clear li').each(function () {
+                $(this).removeClass('layui-this')
+            });
+            if (i == 0) {
+                $("#square").addClass('layui-this');
+                $('#content').attr('src', '../home/square.html');
+            }
+            else if (i == 1) {
+                $("#article").addClass('layui-this');
+                $('#content').attr('src', '../article/article.html');
+            }
+            else if(i==2){
+                $("#time").addClass('layui-this');
+                $('#content').attr('src', '../whisper/whisper.html');
+            }
+            else if(i==4){
+                $("#about").addClass('layui-this');
+                $('#content').attr('src', '../home/about.html');
+            }
+            else if(i==5){
+                $('#content').attr('src', '../user/manager.html?tab=1');
+            }
+        };
+        var op = getSearchString('op');
+        if(op=='leavemessage')
+        {
+            $("#square").removeClass('layui-this')
+            $("#about").addClass('layui-this');
+                $('#content').attr('src', '../home/about.html?op=leavemessage');
+        }
+    </script>
+
+
+</body>
+
+</html>

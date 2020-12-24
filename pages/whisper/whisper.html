@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="~/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202009071529" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        .layui-laydate,
+        .layui-laydate-hint {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .layui-flow-more {
+            margin: 39px 0;
+            font-size: 13px;
+        }
+
+        .layui-flow-more a cite {
+            background-color: #009688;
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="margin-top:0px !important">
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="fly-panel">
+                    <div class="fly-panel-title fly-filter" style="display:flex">
+                        <a>随笔</a>
+                    </div>
+                    <ul class="layui-timeline" style="margin-top: 11px;padding: 0 15px 10px 15px;" id="time-axis"></ul>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <dl class="fly-panel fly-list-one">
+                    <dt class="fly-panel-title">日历</dt>
+                    <div class="calendar" style="padding-left: 54px;">
+                        <div id="calendar"></div>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="article-list-script">
+        {{# layui.each(d.list,function(index,item){}}
+        <li>
+            <!-- <a href="user/home.html" class="fly-avatar">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+            </a> -->
+            <h2>
+                <a class="layui-badge">{{item.articleType}}</a>
+                <a href="../article/detail.html?id={{item.id}}" target="_blank">{{item.title}}</a>
+            </h2>
+            <p>{{item.contentBriefly}}</p>
+            <div class="fly-list-info">
+                <a href="user/home.html" link>
+                    <cite>{{item.authorName}}</cite>
+                </a>
+                <span>{{item.createDate}}</span>
+                <span class="fly-list-nums">
+                    <i class="iconfont icon-pinglun1" title="留言"></i>{{ item.reviewCount}}
+                    <i class="layui-icon layui-icon-read" title="阅读"></i>{{item.readCount}}
+                    <i class="layui-icon layui-icon-praise" title="点赞"></i>{{item.praiseCount}}
+                </span>
+            </div>
+        </li>
+        {{# }); }}
+    </script>
+    <script id="hot-list-script" type="text/html">
+        {{# layui.each(d.list,function(index,item){}}
+        <dd>
+            <a target="_blank" href="../article/detail.html?id={{item.id}}">{{item.title}}</a>
+            <span><i class="iconfont icon-pinglun1"></i> {{item.readCount}}</span>
+          </dd>
+        {{# }); }}
+    </script>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/const.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/modules/whisper/whisper.js"></script>
+</body>
+
+</html>

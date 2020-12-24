@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width" />
+    <title>个人主页</title>
+    <link rel="icon" href="/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202009071529" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        .layui-table-tool-self {display: none;}
+        .layui-tab-brief {width: 831px;margin-top: -10px}
+        .pro-main .home .bg a :hover {color: #fff !important;}
+        .layui-flow-more a cite {background-color: #009688;color: white;}
+        html body {margin-top: 0px !important;}
+    </style>
+</head>
+
+<body style="background:rgba(0,0,0,0)" style="margin-top: 0px !important;">
+
+    <div class="pro-main">
+        <div class="left">
+            <ul class="layui-nav layui-nav-tree layui-inline" style="height: 506px;background-color: #393D49;">
+                <li class="layui-nav-item" id="nav_1" onclick="setTab(1)">
+                    <a href="javascript:;" style="font-size: 14px">个人中心</a>
+                </li>
+                <li class="layui-nav-item" id="nav_2" onclick="setTab(2)">
+                    <a href="javascript:;" style="font-size: 14px">我的主页</a>
+                </li>
+                <li class="layui-nav-item" id="nav_3" onclick="setTab(3)">
+                    <a href="javascript:;" style="font-size: 14px">我的发布</a>
+                </li>
+                <li class="layui-nav-item" id="nav_4" onclick="setTab(4)">
+                    <a href="javascript:;" style="font-size: 14px">我的消息</a>
+                </li>
+            </ul>
+        </div>
+        <div class="right" style="margin-left: 20px">
+            <div class="layui-tab layui-tab-brief" lay-filter="" id="tab_1">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">基本资料</li>
+                    <li>修改头像</li>
+                    <li>修改密码</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;">
+                    <div class="layui-tab-item layui-show">
+                        <form class="layui-form layui-form-pane user-profile" lay-filter="userinfo">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">登录账号</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="account" lay-verify="required"
+                                        style="width: 200px !important" autocomplete="off" readonly unselectable="on"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">昵称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required"
+                                        style="width: 200px !important" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item" pane="" style="width: 307px !important">
+                                <label class="layui-form-label">性别</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="sex" value="男" title="男" checked="">
+                                    <input type="radio" name="sex" value="女" title="女">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">出生日期</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="birthdate" id="birthdate" autocomplete="off"
+                                            style="width: 200px !important" class="layui-input layui-icon-date"
+                                            placeholder="年-月-日">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">手机号</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="phone" lay-verify="phone" autocomplete="off"
+                                            style="width: 200px !important" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-block">
+                                        <input type="email" name="email" lay-verify="email" autocomplete="off"
+                                            style="width: 200px !important" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text sign">
+                                <label class="layui-form-label">个性签名</label>
+                                <div class="layui-input-block">
+                                    <textarea name="sign" placeholder="请输入个性签名" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-submit="" lay-filter="editUser">保存修改</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="layui-form-item">
+                            <div class="avatar-add">
+                                <p>建议尺寸168*168，支持jpg、png、gif</p>
+                                <button type="button" class="layui-btn upload-img" id="upload">
+                                    <i class="layui-icon"></i>上传头像 </button>
+                                <input class="layui-upload-file" type="file" accept="" name="file">
+                                <img id="touxiang"> <span class="loading"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <form class="layui-form layui-form-pane user-profile" action="" method="post">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">当前密码</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="oldpassword" id="oldpassword" autocomplete="off"
+                                        lay-verify="required" style="width: 200px !important" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新密码</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="newpassword" id="newpassword" autocomplete="off"
+                                        lay-verify="required" style="width: 200px !important" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认密码</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="confirmpassword" autocomplete="off"
+                                        lay-verify="required|confirmpassword" style="width: 200px !important"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-submit="" lay-filter="editPassword">保存修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab layui-tab-brief" lay-filter="" id="tab_2" style="display: none;">
+                <div class="home">
+                    <div class="layui-tab layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">个人主页</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <fieldset class="layui-elem-field">
+                                    <legend><img id="user-headphoto" src=""></legend>
+                                </fieldset>
+                                <div class="bi-t">基本资料</div>
+                                <div class="bg" id="user-info">
+                                </div>
+                                <div class="bi-t">个人归档</div>
+                                <div class="bg">
+                                    <ul id="article-file"></ul>
+                                </div>
+                                <div class="bi-t">时间回忆</div>
+                                <div class="bg">
+                                    <ul class="layui-timeline" style="margin-top: 11px" id="time-axis">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab layui-tab-brief" lay-filter="tab_3" id="tab_3" style="display: none;width:886px">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">文章</li>
+                    <li>微语</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;">
+                    <div class="layui-tab-item layui-show">
+                        <div class="layui-form" id="table-search" style="width: 900px;">
+                            <input type="text" id="title" placeholder="标题查询" style="width: 200px !important;float: left"
+                                class="layui-input">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">是否草稿</label>
+                                <div class="layui-input-block" style="width: 61px;">
+                                    <select name="isDraft" id="isdraft">
+                                        <option value="false" selected>否</option>
+                                        <option value="true">是</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="layui-btn" style="float: right;margin-right: 31px;" data-type="reload">
+                                <i class="layui-icon layui-icon-search "></i>
+                            </button>
+                        </div>
+                        <table class="layui-hide" id="articleTable" lay-filter="article">
+                        </table>
+                        <script type="text/html" id="bar1">
+                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+                            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </script>
+                    </div>
+                    <div class="layui-tab-item">
+                        <table class="layui-hide" id="whisperTable" lay-filter="whisper">
+                        </table>
+                        <script type="text/html" id="bar2">
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab layui-tab-brief" lay-filter="" id="tab_4" style="display: none;">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="width:886px">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">回复我的</li>
+                        <li>系统通知</li>
+                    </ul>
+                    <div class="layui-tab-content" style="height: 100px;">
+                        <div class="layui-tab-item layui-show">
+                            <div id="tidings-item"></div>
+                            <!--输出的视图-->
+                            <div id="page" style="text-align: center;"></div>
+                        </div>
+                        <div class="layui-tab-item">内容2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--渲染的模板-->
+    <script type="text/html" id="user-info-script">
+        <div class="bg-li">
+            <p class="p-title">昵称：</p>
+            <p class="p-content">{{d.username}}</p>
+        </div>
+        <div class="bg-li">
+            <p class="p-title">出生：</p>
+            <p class="p-content">{{d.birthDate}}</p>
+        </div>
+        <div class="bg-li">
+            <p class="p-title">性别：</p>
+            <p class="p-content">
+                {{#  if(d.sex=='男'){ }}
+                <i class="layui-icon layui-icon-male" style=" color: #1E9FFF;"></i>
+                {{#  } else{ }}
+                <i class="layui-icon layui-icon-female" style=" color: #1E9FFF;"></i>
+                {{#  } }}
+            </p>
+        </div>
+        <div class="bg-li">
+            <p class="p-title">邮箱：</p>
+            <p class="p-content">{{d.email}}</p>
+        </div>
+        <div class="bg-li">
+            <p class="p-title">签名：</p>
+            <p class="p-content">{{d.sign}}</p>
+        </div>
+    </script>
+    <script type="text/html" id="article-file-script">
+        {{# layui.each(d.list,function(index,item){}}
+        {{#  if(item.articleType==1){ }}
+        <li style="background-color: #01AAED"><a
+                href="../article/archive.html?type={{item.articleType}}&account={{item.total}}">{{item.articleTypeName}}（{{item.total}}）</a>
+        </li>
+        {{# } else if(item.articleType==2){ }}
+        <li style="background-color: #f8c555"><a
+                href="../article/archive.html?type={{item.articleType}}&account={{item.total}}">{{item.articleTypeName}}（{{item.total}}）</a>
+        </li>
+        {{# } else if(item.articleType==3){ }}
+        <li style="background-color: #FF5722"><a
+                href="../article/archive.html?type={{item.articleType}}&account={{item.total}}">{{item.articleTypeName}}（{{item.total}}）</a>
+        </li>
+        {{# } else if(item.articleType==4){ }}
+        <li style="background-color: #cc99cd"><a
+                href="../article/archive.html?type={{item.articleType}}&account={{item.total}}">{{item.articleTypeName}}（{{item.total}}）</a>
+        </li>
+        {{# } else { }}
+        <li style="background-color: #337ab7"><a
+                href="../article/archive.html?type={{item.articleType}}&account={{item.total}}">{{item.articleTypeName}}（{{item.total}}）</a>
+        </li>
+        {{#  } }}
+        {{# });}}
+    </script>
+    <script type="text/html" id="buildScript">
+        {{# layui.each(d.list,function(index,item){}}
+        <div class="reply">
+            <div>
+                <a target="_blank" href="../user/user-home.html?account={{item.postUserAccount}}"
+                    class="reply-name">{{item.postUsername}}</a> <span class="r">回复：</span>
+                <span class="reply-content">
+                    <a class="content-url" onclick="doneTidings({{item.id}})" target="_blank"
+                        href="{{item.url}}">{{item.postContent}}</a>
+                </span>
+            </div>
+            <div class="reply-from">
+                <a target="_blank" href="../user/user-home.html?account={{item.reviceUserAccount}}"
+                    class="reply-name">{{item.reviceUsername}}</a> <span class="r">：</span>
+                <a class="content-url" onclick="doneTidings({{item.id}})" target="_blank"
+                    href="{{item.url}}">{{item.content}}</a>
+            </div>
+
+            <div class="reply-date">
+                {{item.postDate}}
+            </div>
+        </div>
+        {{# });}}
+    </script>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/const.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/signalr.js"></script>
+    <script src="/js/modules/user/manager.js"></script>
+</body>
+
+</html>
