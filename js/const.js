@@ -1,1 +1,1 @@
-var api='http://localhost:5000';
+var api='http://0.0.0.0:5000';
