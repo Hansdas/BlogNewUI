@@ -1,1 +1,1 @@
-var api='http://www.ttblog.site/gateway';
+var api='172.21.0.14';
