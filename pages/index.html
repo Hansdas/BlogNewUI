@@ -106,7 +106,7 @@
         layui.use('element', function () {
             var element = layui.element;
             setIframeHeight('content');
-            var connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:5004/chatHub").build();
+            var connection = new signalR.HubConnectionBuilder().withUrl("http://111.229.211.248:5004/chatHub").build();
             connection.on('ReviceMesage', function (message) {
                 var oldNum = parseInt($('.notice').html());
                 var newNum = parseInt(message.data);
