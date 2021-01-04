@@ -41,22 +41,52 @@
                                     <div class="bg-li">
                                         <p class="p-title">技术：</p>
                                         <p class="p-content">
-                                            随着微服务的火热，DDD(领域驱动设计模式)思想风起云涌，冲击着整个软件生态系统。闲暇之余，学习并且用DDD搭建了之个项目。
-                                            这个项目由.net
-                                            core3.1作为后端，layui作为前端搭建的前后端分离项目，使用轻量级ORM:dapper进行DB处理。其中，mysql用来存储数据，redis用来缓存数据，<a
-                                                style="color:#FF5722"
-                                                href="https://docs.microsoft.com/zh-cn/aspnet/core/signalr/introduction?view=aspnetcore-3.1"
-                                                target="_blank">SignalR</a>进行实时网络通信，系统主要有这三点支撑运行，服务器采用腾讯云的学生机centos服务器。（目前在思考放弃
-                                            DDD模式，加上EFCore，改为传统的3层，有些东西只要自己试了才知道适不适合）
+                                            本项目是一个简单的微服务项目，使用
+                                            <a style="color:#FF5722"
+                                            href="https://docs.microsoft.com/zh-cn/aspnet/core/signalr/introduction?view=aspnetcore-3.1"
+                                            target="_blank">ocelot</a>作为网关服务，
+                                            core3.1作为后端，layui作为前端搭建。项目拆分为BlogGateway:网关服务，使用Ocelot完成；BlogWebApi：web基本服务；
+                                            BlogAuthApi：认证服务；BlogSmsApi：消息服务。
+                                            <table class="layui-table" lay-size="sm" style="width: 42%;margin-left: 38px;">
+
+                                                <thead>
+                                                  <tr>
+                                                    <th>插件</th>
+                                                    <th>说明</th>
+                                                  </tr> 
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td><a target="_blank" href="https://docs.microsoft.com/zh-cn/ef/core/">EFCore</a></td>
+                                                    <td>ORM数据访问技术</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td><a target="_blank" href="https://github.com/StackExchange/Dapper">dapper</a></td>
+                                                    <td>轻量化ORM数据访问技术</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td><a target="_blank" href="https://docs.microsoft.com/zh-cn/aspnet/signalr/overview/getting-started/introduction-to-signalr">SignalR</a></td>
+                                                    <td>实时 web 功能让服务器代码将内容推送到连接的客户端立</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td><a target="_blank" href="https://www.runoob.com/redis/redis-tutorial.html">Redis</a></td>
+                                                    <td>缓存中间件</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td><a target="_blank" href="https://www.rabbitmq.com/">RabbitMQ</a></td>
+                                                    <td>消息队列服务</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                         </p>
                                     </div>
                                     <div class="bg-li">
                                         <p class="p-title">GitHub：</p>
                                         <p class="p-content">
                                             BlogApi:<a style="color:#FF5722" href="https://github.com/Hansdas/BlogH.git"
-                                                target="_blank">https://github.com/Hansdas/BlogH.git</a>&nbsp;&nbsp;
+                                                target="_blank">https://github.com/Hansdas/Blog_New.git</a>&nbsp;&nbsp;
                                             BlogUI:<a style="color:#FF5722" href="https://github.com/Hansdas/BlogUI.git"
-                                                target="_blank">https://github.com/Hansdas/BlogUI.git</a>
+                                                target="_blank">https://github.com/Hansdas/BlogNewUI.git</a>
                                     </div>
                                     <div class="bg-li">
                                         <p class="p-title">联系方式：</p>
