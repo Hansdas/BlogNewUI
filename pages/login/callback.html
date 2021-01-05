@@ -30,7 +30,7 @@
                 dataType: 'json',
                 success: function (res) {
                     if (res.code == "200") {
-                        localStorage.setItem("token", res.data);
+                        localStorage.setItem("loginToken", res.data);
                         window.location.href = "../index.html";
                     }
                     else {
