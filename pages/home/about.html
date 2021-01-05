@@ -10,7 +10,7 @@
     <link href="/css/main.css?v=202009071529" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
     <style>
-        .layui-colla-title{
+        .layui-colla-title {
             background-color: white !important;
         }
     </style>
@@ -43,41 +43,61 @@
                                         <p class="p-content">
                                             本项目是一个简单的微服务项目，使用
                                             <a style="color:#FF5722"
-                                            href="https://docs.microsoft.com/zh-cn/aspnet/core/signalr/introduction?view=aspnetcore-3.1"
-                                            target="_blank">ocelot</a>作为网关服务，
+                                                href="https://ocelot.readthedocs.io/en/latest/index.html"
+                                                target="_blank">ocelot</a>作为网关服务，
                                             core3.1作为后端，layui作为前端搭建。项目拆分为BlogGateway:网关服务，使用Ocelot完成；BlogWebApi：web基本服务；
                                             BlogAuthApi：认证服务；BlogSmsApi：消息服务。
-                                            <table class="layui-table" lay-size="sm" style="width: 42%;margin-left: 38px;">
+                                        <table class="layui-table" lay-size="sm" style="width: 42%;margin-left: 38px;">
 
-                                                <thead>
-                                                  <tr>
+                                            <thead>
+                                                <tr>
                                                     <th>插件</th>
                                                     <th>说明</th>
-                                                  </tr> 
-                                                </thead>
-                                                <tbody>
-                                                  <tr>
-                                                    <td><a target="_blank" href="https://docs.microsoft.com/zh-cn/ef/core/">EFCore</a></td>
-                                                    <td>ORM数据访问技术</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td><a target="_blank" href="https://github.com/StackExchange/Dapper">dapper</a></td>
-                                                    <td>轻量化ORM数据访问技术</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td><a target="_blank" href="https://docs.microsoft.com/zh-cn/aspnet/signalr/overview/getting-started/introduction-to-signalr">SignalR</a></td>
-                                                    <td>实时 web 功能让服务器代码将内容推送到连接的客户端立</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td><a target="_blank" href="https://www.runoob.com/redis/redis-tutorial.html">Redis</a></td>
-                                                    <td>缓存中间件</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td><a target="_blank" href="https://www.rabbitmq.com/">RabbitMQ</a></td>
-                                                    <td>消息队列服务</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a target="_blank"
+                                                            href="https://ocelot.readthedocs.io/en/latest/index.html">Ocelot</a>
+                                                    </td>
+                                                    <td>Ocelot是一个用.NET
+                                                        Core实现并且开源的API网关，它功能强大，包括了：路由、请求聚合、服务发现、认证、鉴权、限流熔断等功能</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a target="_blank"
+                                                            href="https://docs.microsoft.com/zh-cn/ef/core/">EFCore</a>
+                                                    </td>
+                                                    <td>实体框架数据访问ORM技术</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a target="_blank"
+                                                            href="https://github.com/StackExchange/Dapper">dapper</a>
+                                                    </td>
+                                                    <td>Dapper是一个简单的.NET对象映射器,它负责数据库和编程语言之间的映射。Dapper通过扩展IDbConnection提供一些有用的扩展方法去查询您的数据库。
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a target="_blank"
+                                                            href="https://docs.microsoft.com/zh-cn/aspnet/signalr/overview/getting-started/introduction-to-signalr">SignalR</a>
+                                                    </td>
+                                                    <td>实时 web
+                                                        功能让服务器代码将内容推送到连接的客户端立，允许客户端向服务器发送多个消息，并允许服务器做出相应答复，还允许服务器向客户端发送异步消息
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a target="_blank"
+                                                            href="https://github.com/StackExchange/StackExchange.Redis">StackExchange.Redis</a>
+                                                    </td>
+                                                    <td>StackExchange.Redis是一个.Net平台上使用较为广泛的一个Redis封装</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a target="_blank"
+                                                            href="https://www.rabbitmq.com/dotnet.html">RabbitMQ.Client</a>
+                                                    </td>
+                                                    <td>RabbitMQ.Client客户端是针对C＃的实现类库</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         </p>
                                     </div>
                                     <div class="bg-li">
