@@ -56,7 +56,7 @@ function loadarticle(pageIndex, pageSize, initPage) {
 							}
 						},
 					});
-				}
+				};
 			}
 			else {
 				layer.msg('响应服务器失败', {
