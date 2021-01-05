@@ -24,21 +24,21 @@
                 layer.msg('code无效', { icon: 5 });
                 return;
             }
-            $.ajax({
-                url: api + '/qq/login/' + code,
-                type: 'get',
-                dataType: 'json',
-                success: function (res) {
-                    if (res.code == "200") {
-                        localStorage.setItem("token", res.data);
-                        window.location.href = "index.html";
-                    }
-                    else {
-                        layer.close(loading)
-                        layer.msg(res.message, { icon: 5 });
-                    }
-                }
-            })
+            // $.ajax({
+            //     url: api + '/qq/login/' + code,
+            //     type: 'get',
+            //     dataType: 'json',
+            //     success: function (res) {
+            //         if (res.code == "200") {
+            //             localStorage.setItem("token", res.data);
+            //             window.location.href = "index.html";
+            //         }
+            //         else {
+            //             layer.close(loading)
+            //             layer.msg(res.message, { icon: 5 });
+            //         }
+            //     }
+            // })
         })
     </script>
 </body>
