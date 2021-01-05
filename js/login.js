@@ -27,19 +27,24 @@ layui.use(["form"], function () {
 		});
 		return false;
 	})
-})
-
-function loginout()
-{
-	var token=localStorage.getItem('token');
+});
+function loginOut() {
 	$.ajax({
-		url: url + 'login/out',
-		type: 'post',
-		data:{
-			'token':token
+		url: api + '/login/out',
+		type: 'get',
+		dataType: 'json',
+		headers: {
+			loginToken: localStorage.getItem('loginToken')
 		},
-		dataType: 'json'
+		success: function (response) {
+			if (response.code == '200') {
+				localStorage.removeItem('loginToken');
+				window.location.href = "/login/login.html"
+			}
+		}
 	});
-	localStorage.removeItem('token');
-	window.open('../login/login.html?v=1','_top')
+};
+function qqLogin() {
+	var url = 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101895784&redirect_uri=http%3a%2f%2fwww.ttblog.site%2flogin%2fcallback.html&state=blog';
+	top.location.href = url;
 }

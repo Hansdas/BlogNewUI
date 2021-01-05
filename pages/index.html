@@ -26,7 +26,8 @@
                     <a target="_blank" href="index.html?op=leavemessage"><i class="iconfont icon-jiaoliu"></i>留言</a>
                 </li>
                 <li class="layui-nav-item layui-this">
-                    <a target="_blank" href="https://github.com/Hansdas/Blog_New" target="_blank"><i class="iconfont icon-iconmingxinganli"></i>github</a>
+                    <a target="_blank" href="https://github.com/Hansdas/Blog_New" target="_blank"><i
+                            class="iconfont icon-iconmingxinganli"></i>github</a>
                 </li>
             </ul>
 
@@ -41,15 +42,11 @@
                         <a href="/login/login.html">登入</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="user/reg.html">注册</a>
+                        <a href="/login/logon.html">注册</a>
                     </li>
                     <li class="layui-nav-item layui-hide-xs">
-                        <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入"
+                        <a href="javascript:;" onclick="qqLogin()" title="QQ登入"
                             class="iconfont icon-qq"></a>
-                    </li>
-                    <li class="layui-nav-item layui-hide-xs">
-                        <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})"
-                            title="微博登入" class="iconfont icon-weibo"></a>
                     </li>
                 </div>
                 <!-- 登入后的状态 -->
@@ -58,16 +55,17 @@
                         <a class="fly-nav-avatar" href="javascript:;">
                             <i class="layui-badge fly-badge-vip layui-hide-xs" title="我的消息">
                                 <span class="blink" id="notice"></span>
-                                </i>
+                            </i>
                             <img id="photo" src="">
                         </a>
                         <dl class="layui-nav-child">
-                            <dd><a id="myTidings" href=""><i class="iconfont icon-tongzhi"style="top: 4px;"></i>我的消息</a>
+                            <dd><a id="myTidings" href=""><i class="iconfont icon-tongzhi"
+                                        style="top: 4px;"></i>我的消息</a>
                             </dd>
                             <dd><a href="javascript:;" onclick="tab(5)"><i class="layui-icon"
                                         style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
                             <hr style="margin: 5px 0;">
-                            <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
+                            <dd><a href="javascript:;" onclick="loginOut()" style="text-align: center;">退出</a></dd>
                         </dl>
                     </li>
                 </div>
@@ -90,7 +88,7 @@
         marginheight='0' noresize="noresize" src="/home/square.html"></iframe>
     <div class="fly-footer">
         <p>
-            <a href="javascript:;">作者：  Copyright © Mr.Han</a>
+            <a href="javascript:;">作者： Copyright © Mr.Han</a>
             <a href="javascript:;">联系方式：3248996258@qq.com</a>
             <a href="http://beian.miit.gov.cn" target="_blank">鄂ICP备20001892号-2</a>
         </p>
@@ -100,6 +98,7 @@
     <script src="/js/signalr.js"></script>
     <script src="/js/const.js?v=202101040950"></script>
     <script src="/js/utils.js"></script>
+    <script src="/js/login.js?v=202101051005"></script>
     <script>
         layui.use('element', function () {
             var element = layui.element;
@@ -126,7 +125,7 @@
                         $("#login-show").show();
                         $("#photo").attr('src', response.data.photo);
                         $('#notice').html(response.data.count);
-                        $('#myTidings').html("<i class='iconfont icon-tongzhi'style=/top: 4px;''></i>我的消息("+response.data.count+")");
+                        $('#myTidings').html("<i class='iconfont icon-tongzhi'style=/top: 4px;''></i>我的消息(" + response.data.count + ")");
                         connection.start().then(function () {
                             connection.invoke('SetConnectionMaps', response.data.account);
                         });
@@ -149,24 +148,23 @@
                 $("#article").addClass('layui-this');
                 $('#content').attr('src', '../article/article.html');
             }
-            else if(i==2){
+            else if (i == 2) {
                 $("#time").addClass('layui-this');
                 $('#content').attr('src', '../whisper/whisper.html');
             }
-            else if(i==4){
+            else if (i == 4) {
                 $("#about").addClass('layui-this');
                 $('#content').attr('src', '../home/about.html');
             }
-            else if(i==5){
+            else if (i == 5) {
                 $('#content').attr('src', '../user/manager.html?tab=1');
             }
         };
         var op = getSearchString('op');
-        if(op=='leavemessage')
-        {
+        if (op == 'leavemessage') {
             $("#square").removeClass('layui-this')
             $("#about").addClass('layui-this');
-                $('#content').attr('src', '../home/about.html?op=leavemessage');
+            $('#content').attr('src', '../home/about.html?op=leavemessage');
         }
     </script>
 
