@@ -10,6 +10,9 @@
   <link href="/lib/layui/css/layui.css" rel="stylesheet" />
   <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
   <link href="/css/common.css" rel="stylesheet" />
+  <style>
+    .layui-col-md8{width: 100% !important;}
+  </style>
 </head>
 
 <body>
@@ -75,83 +78,15 @@
           </div>
         </div>
       </div>
-      <div class="layui-col-md4">
-        <dl class="fly-panel fly-list-one">
-          <dt class="fly-panel-title">本周热议</dt>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-          <dd>
-            <a href="">基于 layui 的极简社区页面模版</a>
-            <span><i class="iconfont icon-pinglun1"></i> 16</span>
-          </dd>
-
-          <!-- 无数据时 -->
-          <!--
-        <div class="fly-none">没有相关数据</div>
-        -->
-        </dl>
-
-        <div class="fly-panel">
-          <div class="fly-panel-title">
-            这里可作为广告区域
-          </div>
-          <div class="fly-panel-main">
-            <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu"
-              time-limit="2017.09.25-2099.01.01" style="background-color: #5FB878;">LayIM 3.0 - layui 旗舰之作</a>
-          </div>
-        </div>
-
-        <div class="fly-panel" style="padding: 20px 0; text-align: center;">
-          <img src="../../res/images/weixin.jpg" style="max-width: 100%;" alt="layui">
-          <p style="position: relative; color: #666;">微信扫码关注 layui 公众号</p>
-        </div>
-
-      </div>
     </div>
   </div>
 
   <div class="fly-footer">
-    <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/"
-        target="_blank">layui.com 出品</a></p>
     <p>
-      <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-      <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-      <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-    </p>
+      <a href="javascript:;">作者： Copyright © Mr.Han</a>
+      <a href="javascript:;">联系方式：3248996258@qq.com</a>
+      <a href="http://beian.miit.gov.cn" target="_blank">鄂ICP备20001892号-2</a>
+  </p>
   </div>
 <script type="text/html" id="detail-script">
   <h1>{{d.title}}</h1>
@@ -209,11 +144,18 @@
   </li>
   {{# }); }}
 </script>
+<script id="article-list-script" type="text/html">
+  {{# layui.each(d.list,function(index,item){}}
+  <dd>
+    <a target="_blank" href="../article/detail.html?id={{item.id}}">{{item.title}}</a>
+  </dd>
+  {{# }); }}
+</script>
 <script src="/lib/layui/layui.js"></script>
 <script src="/js/jquery/jquery.min.js"></script>
 <script src="/js/const.js?v=202101040950"></script>
 <script src="/js/utils.js"></script>
-<script src="/js/modules/article/detail.js"></script>
+<script src="/js/modules/article/detail.js?v=202101061441"></script>
 </body>
 
 </html>

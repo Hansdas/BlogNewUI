@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="ttblog,博客,个人博客,个人站点">
     <meta name="description"
-        content="此项目用于个人学习，开源代码，框架没有过多引用第三方框架，易于学习。 这个项目由.net core3.1作为后端，layui作为前端，使用轻量级ORM:dapper进行DB处理">
+        content="此项目用于个人学习，开源代码，框架没有过多引用第三方框架，易于学习。 这个项目由.net core3.1作为后端，layui作为前端">
     <link rel="icon" href="/images/title.png" />
     <link href="/lib/layui/css/layui.css" rel="stylesheet" />
     <link href="/lib/layui/css/global.css" rel="stylesheet" />
@@ -36,7 +36,7 @@
                 <!-- 未登入的状态 -->
                 <div id="no-login-hide" style="display: none;">
                     <li class="layui-nav-item">
-                        <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+                        <a class="iconfont icon-touxiang layui-hide-xs" href="/login/login.html"></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="/login/login.html">登入</a>
@@ -78,7 +78,7 @@
                 <li id="square" class="layui-hide-xs layui-this"><a href="javascript:;" onclick="tab(0)">首页</a></li>
                 <li id="article"><a href="javascript:;" onclick="tab(1)">随笔</a></li>
                 <li id="time"><a href="javascript:;" onclick="tab(2)">时间</a></li>
-                <li><a href="javascript:;" onclick="tab(0)">视频</a></li>
+                <!-- <li><a href="javascript:;" onclick="tab(0)">视频</a></li> -->
                 <li id="about"><a href="javascript:;" onclick="tab(4)">关于</a></li>
             </ul>
         </div>

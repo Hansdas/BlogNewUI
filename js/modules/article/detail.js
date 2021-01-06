@@ -1,4 +1,5 @@
-﻿layui.config({
+﻿var authorAccount; 
+layui.config({
 	base: '/style/js/'
 }).use(['element', 'jquery', 'layer', 'laytpl', 'form', 'laypage'], function () {
 	element = layui.element,
@@ -11,17 +12,17 @@
 	loadArticle(id);
 	loadUpNext(id);
 	var token=localStorage.getItem('loginToken'); 
-    // if (token==''||token==null) {
-    //     $('#submitComment').attr('disabled',true);  
-    //     $('#submitComment').text('未登录');
-    // }
+    if (token==''||token==null) {
+        $('#submitComment').attr('disabled',true);  
+        $('#submitComment').text('未登录');
+    }
 });
 /**
  * 加载文章内容
  * @param {} id 
  */
 function loadArticle(id) {
-	initLoading("detail", 10, 350);
+	initLoading("detail", 10, 550);
 	$.ajax({
 		url: api + '/article/' + id,
 		type: 'get',
@@ -38,6 +39,7 @@ function loadArticle(id) {
 					"reviewCount": response.data.reviewCount,
 					"readCount": response.data.readCount
 				};
+				authorAccount= response.data.authorAccount;
 				revicer = response.data.authorAccount;
 				$('title').html(data.title);
 				//$('#authorName').html(response.data.author);
@@ -55,6 +57,17 @@ function loadArticle(id) {
 		},
 
 	});
+}
+function loadArticleList(){
+	initLoading("detail", 10, 350);
+	$.ajax({
+		url: api + '/article/list/'+authorAccount,
+		type: 'get',
+		datatype: 'json',
+		success:function(resp){
+
+		}
+	})
 }
 function loadComment(commentList, script) {
     var commentData = {
