@@ -6,7 +6,8 @@
 
 #whisper-list .whisper-item {margin: 15px 0 16px 0;}
 #whisper-list .whisper-item .author {float: left;font-size: 13px;color: #00a67c;}
-#whisper-list .whisper-item p img {height: 14px;white-space: pre-line;word-break: break-all;word-wrap: break-word}
+#whisper-list .whisper-item p {white-space: pre-line;word-break: break-all;word-wrap: break-word}
+#whisper-list .whisper-item p img {height: 14px}
 #whisper-list .whisper-item .date {font-size: 12px;float: right; margin-top: 15px;color: #9b9b9b;}
 
 
