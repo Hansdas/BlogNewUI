@@ -61,7 +61,7 @@ layui.use(['form', 'layer'], function () {
                     'FilePaths':filePaths
                 };
                 $.ajax({
-                    url:url+ 'article/add',
+                    url:api+ '/article/add',
                     contentType:'application/json; charset=utf-8',
                     type:'post',
                     datatype:'json',
@@ -108,7 +108,7 @@ layui.use(['form', 'layer'], function () {
                     'FilePaths':filePaths
                 };
                 $.ajax({
-                    url:url+ 'article/add',
+                    url:api+ '/article/add',
                     contentType:'application/json; charset=utf-8',
                     type:'post',
                     datatype:'json',
@@ -145,7 +145,7 @@ layui.use(['form', 'layer'], function () {
     });
 });
 function checklogin() {
-    var token=localStorage.getItem('token'); 
+    var token=localStorage.getItem('loginToken'); 
     if (token ==null) {
             layer.msg('你还未登录', {
                 time: 1500,
@@ -157,7 +157,7 @@ function checklogin() {
 function bindArticle(id){
     loading = layer.load(2,{offset: 'auto'});
     $.ajax({
-        url:url+ 'article/' + id,
+        url:api+ '/article/' + id,
         type:'get',
         datatype:'json',
         success:function(response)
@@ -177,7 +177,7 @@ function bindArticle(id){
 }
 function bindselect() {
     $.ajax({
-        url:url+ 'article/types',
+        url:api+ '/article/types',
         type:'get',
         datatype:'json',
         success:function(response)

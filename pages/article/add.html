@@ -21,12 +21,28 @@
 </head>
 
 <body style="background-color: white;min-height: 800px;">
-    <div class="layui-bg-black-2" style="z-index: 1;">
-        <div  style="height: 43px;">
-            <i class="layui-icon layui-icon-release" style="font-size: 30px;margin-top: 6px;"></i>
+    <div class="fly-header layui-bg-black">
+        <div class="layui-container" style="right: 170px;">
+          <a class="fly-logo" href="/">
+            <img src="/images/lg.png" />
+          </a>
+          <ul class="layui-nav fly-nav layui-hide-xs">
+            <li class="layui-nav-item layui-this">
+              <a href="/"></i>随笔</a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="../case/case.html"></i>时间</a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="http://www.layui.com/" target="_blank"></i>视频</a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="../case/case.html"></i>公告</a>
+            </li>
+          </ul>
         </div>
-    </div>
-        <div class="content" style="padding-top: 40px !important">
+      </div>
+        <div class="content" style="padding-top: 57px !important">
             <div class="layui-form layui-form-pane">
                 <div class="layui-tab layui-tab-brief">
                     <ul class="layui-tab-title">
@@ -37,7 +53,7 @@
                     <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
                         <div class="layui-tab-item layui-show">
                             <form action="" class="layui-form" lay-filter="articleInfo">
-                                <div class="layui-row layui-col-space15" style="margin-top:-214px">
+                                <div class="layui-row layui-col-space15">
                                     <div class="layui-col-md3">
                                         <label class="layui-form-label">所在专栏</label>
                                         <div class="layui-input-block">
@@ -56,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-form-text">
-                                    <div class="layui-input-block" style="top: 162px;">
+                                    <div class="layui-input-block">
                                         <textarea id="ckEditor" ></textarea>
                                     </div>
                                 </div>
@@ -76,11 +92,11 @@
             </div>
         </div>
     <script src="/lib/layui/layui.js"></script>
-    <script src="/lib/ckeditor/ckeditor.js"></script>
+    <script src="/lib/ckeditor/ckeditor.js?v-202001280925"></script>
     <script src="/js/jquery/jquery.min.js"></script>
     <script src="/js/const.js?v=202101040950"></script>
-    <script src="/js/utils.js"></script>
-    <script src="/js/modules/article/add.js"></script>
+    <script src="/js/utils.js?v=202001271458"></script>
+    <script src="/js/modules/article/add.js?v=202101081106"></script>
 </body>
 
 </html>
