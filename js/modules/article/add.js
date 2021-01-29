@@ -66,12 +66,13 @@ layui.use(['form', 'layer'], function () {
                     type:'post',
                     datatype:'json',
                     data: JSON.stringify(model),
+                    headers: {
+                        loginToken: localStorage.getItem('loginToken')
+                    },
                     success:function(response)
                     {
                         if (response.code == 200) {
-                            layer.close(loading);
-                            layer.msg("保存成功", { icon: 6 });
-                    
+                            window.location.href = '../article/detail.html?id='+response.data;                  
                         }
                         else if(response.code==403) {
                             layer.close(loading);
@@ -113,12 +114,14 @@ layui.use(['form', 'layer'], function () {
                     type:'post',
                     datatype:'json',
                     data: JSON.stringify(model),
+                    headers: {
+                        loginToken: localStorage.getItem('loginToken')
+                    },
                     success:function(response)
                     {
                         if (response.code ==200) {
                             layer.close(loading);
-                            layer.msg("保存成功", { icon: 6 });
-                    
+
                         } 
                          else if(response.code==403) {
                             layer.close(loading);

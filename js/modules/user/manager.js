@@ -362,7 +362,7 @@ function loadArticle(){
                 loading = layer.load(2);
                 layer.close(index);
                 $.ajax({
-                    url: url + 'article/' + data.id,
+                    url: api + '/article/delete/' + data.id,
                     type: 'delete',
                     datatype: 'json',
                     success: function () {
