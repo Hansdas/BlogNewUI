@@ -56,7 +56,7 @@ layui.use(['form', 'layer'], function () {
                     'ArticleType': articleData.type,
                     'Title': articleData.title,
                     'Content': content,
-                    'TextSection': textsection+'...',
+                    'contentBriefly': textsection+'...',
                     'IsDraft': 'true',
                     'FilePaths':filePaths
                 };
@@ -104,7 +104,7 @@ layui.use(['form', 'layer'], function () {
                     'ArticleType': articleData.type,
                     'Title': articleData.title,
                     'Content': content,
-                    'TextSection': textsection+'...',
+                    'contentBriefly': textsection+'...',
                     'IsDraft': 'false',
                     'FilePaths':filePaths
                 };
