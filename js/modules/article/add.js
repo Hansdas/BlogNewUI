@@ -120,7 +120,7 @@ layui.use(['form', 'layer'], function () {
                     success:function(response)
                     {
                         if (response.code ==200) {
-                            layer.close(loading);
+                            window.location.href = '../article/detail.html?id='+response.data;     
 
                         } 
                          else if(response.code==403) {
