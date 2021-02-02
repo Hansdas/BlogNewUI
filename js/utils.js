@@ -129,7 +129,7 @@ layui.use('layer', function () {
 			}
 			if (requestToken) {
 				$.ajax({
-					url: 'http://localhost/auth/credentials/token',
+					url: 'http://www.ttblog.site/auth/credentials/token',
 					type: 'get',
 					datatype: 'json',
 					async:false,
