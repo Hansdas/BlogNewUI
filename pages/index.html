@@ -54,7 +54,7 @@
                     <li class="layui-nav-item">
                         <a class="fly-nav-avatar" href="javascript:;">
                             <i class="layui-badge fly-badge-vip layui-hide-xs" title="我的消息">
-                                <span class="blink" id="notice"></span>
+                                <span class="" id="notice"></span>
                             </i>
                             <img id="photo" src="">
                         </a>
@@ -96,19 +96,20 @@
     <script src="/js/jquery/jquery.min.js"></script>
     <script src="/js/signalr.js"></script>
     <script src="/js/const.js?v=202101040950"></script>
-    <script src="/js/utils.js"></script>
+    <script src="/js/utils.js?v=202001271458"></script>
     <script src="/js/login.js?v=202101051005"></script>
     <script>
         layui.use('element', function () {
             var element = layui.element;
             setIframeHeight('content');
-            var connection = new signalR.HubConnectionBuilder().withUrl("http://111.229.211.248:5004/chatHub").build();
+            var connection = new signalR.HubConnectionBuilder().withUrl("http://127.0.0.1:5004/SingalrClient").build();
             connection.on('ReviceMesage', function (message) {
-                var oldNum = parseInt($('.notice').html());
+                var count=$('#notice').html();
+                var oldNum = parseInt(count);
                 var newNum = parseInt(message.data);
-                $('.notice').html(newNum);
+                $('#notice').html(newNum);
                 if (oldNum < newNum) {
-                    $('.notice').addClass('blink');
+                    $('#notice').addClass('blink');
                 }
             });
             $.ajax({
@@ -116,7 +117,7 @@
                 type: 'get',
                 dataType: 'json',
                 headers: {
-                    loginToken: localStorage.getItem('loginToken')
+                    loginToken: localStorage.getItem('loginToken'),
                 },
                 success: function (response) {
                     if (response.code == '200') {
@@ -126,7 +127,9 @@
                         $('#notice').html(response.data.count);
                         $('#myTidings').html("<i class='iconfont icon-tongzhi'style=/top: 4px;''></i>我的消息(" + response.data.count + ")");
                         connection.start().then(function () {
-                            connection.invoke('SetConnectionMaps', response.data.account);
+                            connection.invoke('SetConnectionMaps', response.data.account).catch(function(errer){
+                                console.error(errer.toString())
+                            });
                         });
                     } else {
                         $("#no-login-hide").show();

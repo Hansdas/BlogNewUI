@@ -160,12 +160,12 @@ function reviewTo(toUser, commentId,index) {
 			loginToken: localStorage.getItem('loginToken')
 		},
 		success: function (response) {
-			if(response.code==0){
-				layer.close(loading);
-				layer.msg('留言审核中', {
-                    offset: ['280px', '540px'],
-					icon: 6
-				});
+			layer.close(loading);
+			if(response.code=="200"){
+				layer.msg('留言审核中', {icon: 6});
+			}
+			else{
+				layer.msg('提交失败', {icon: 7});
 			}
 		}
 	})
@@ -175,12 +175,11 @@ function review() {
     if(comment==''){
         layer.msg("内容为空", {
             icon: 5,
-            offset: ['280px', '540px']
         });
         return false;
     }
 	var id = getSearchString('id');
-    var loading = layer.load(2,{ offset: ['280px', '600px']});
+    var loading = layer.load(2);
 	$.ajax({
 		url: api + '/article/comment/add',
 		type: 'post',
@@ -194,12 +193,12 @@ function review() {
 			loginToken: localStorage.getItem('loginToken')
 		},
 		success: function (response) {
+			layer.close(loading);
 			if(response.code=="200"){
-				layer.close(loading);
-				layer.msg('留言审核中', {
-                    offset: ['280px', '540px'],
-					icon: 6
-				});
+				layer.msg('留言审核中', {icon: 6});
+			}
+			else{
+				layer.msg('提交失败', {icon: 7});
 			}
 		}
 	})

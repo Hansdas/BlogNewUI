@@ -129,7 +129,7 @@ layui.use('layer', function () {
 			}
 			if (requestToken) {
 				$.ajax({
-					url: api + '/auth/token',
+					url: 'http://localhost/auth/credentials/token',
 					type: 'get',
 					datatype: 'json',
 					async:false,
