@@ -102,7 +102,7 @@
         layui.use('element', function () {
             var element = layui.element;
             setIframeHeight('content');
-            var connection = new signalR.HubConnectionBuilder().withUrl("http://127.0.0.1:5004/SingalrClient").build();
+            var connection = new signalR.HubConnectionBuilder().withUrl("http://111.229.211.248:5004/SingalrClient").build();
             connection.on('ReviceMesage', function (message) {
                 var count=$('#notice').html();
                 var oldNum = parseInt(count);
