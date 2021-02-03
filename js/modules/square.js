@@ -1,12 +1,13 @@
 ﻿
-layui.use(['element', 'jquery', 'laytpl', 'layer', 'layedit', 'flow', 'form', 'carousel'], function () {
+layui.use(['element', 'jquery', 'laytpl', 'layer', 'layedit', 'flow', 'form', 'carousel','layer'], function () {
 	element = layui.element,
 		$ = layui.$,
 		laytpl = layui.laytpl,
 		layer = layui.layer,
 		layedit = layui.layedit,
 		flow = layui.flow,
-		carousel = layui.carousel
+		carousel = layui.carousel,
+		layer = layui.layer;
 	form = layui.form;
 	var whisperContent =layedit.build('whisperContent', {
 		height: 50, //设置编辑器高度\
