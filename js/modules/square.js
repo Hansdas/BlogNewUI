@@ -18,7 +18,7 @@ layui.use(['element', 'jquery', 'laytpl', 'layer', 'layedit', 'flow', 'form', 'c
 	deptObjs[0].style.fontSize = "12px";
 	deptObjs[0].style.padding = "4px";
 	deptObjs[0].style.background = "white";
-	var connection = new signalR.HubConnectionBuilder().withUrl("http://127.0.0.1:5004/SingalrClient").build();
+	var connection = new signalR.HubConnectionBuilder().withUrl("http://111.229.211.248:5004/SingalrClient").build();
     connection.on('AllReviceMesage',function(reviceMessage){
         var data = {
             'list': reviceMessage.data
@@ -29,6 +29,7 @@ layui.use(['element', 'jquery', 'laytpl', 'layer', 'layedit', 'flow', 'form', 'c
     connection.start();
 	loadArticle();
 	loadWhisper();
+	loadFriendLink();
 	$('.layui-btn').on('click', function () {
 		var type = $(this).data('type');
 		active[type] ? active[type].call(this) : '';
@@ -126,6 +127,26 @@ function bindWhisper(data) {
         listHtml.innerHTML = html;
     });
 }
+function loadFriendLink(){
+	$.ajax({
+		'url':api+'/leavemessage/friendlinks',
+		'type':'get',
+		'dataType':'json',
+		success:function(resp){
+			layer.close(loading);
+			if (resp.code == "200") {
+				for(var i=0;i<resp.data.length;i++){
+					var friendLinkHtml="<dd>"+
+					"<a href="+resp.data[i].link+">"+
+			        "<img src="+resp.data[i].img+"><i>"+resp.data[i].webName+"</i>"+
+					"</a>"+
+					"</dd>"
+					$('#friendlink').append(friendLinkHtml);
+				}
+			};
+		}
+	})
+}
 function applyFriendLinks(){
 	layer.open({
 		type: 2,
@@ -135,6 +156,7 @@ function applyFriendLinks(){
 		content: '../leavemessage/friend-link.html',
 		btn: ['确定'],
 		btn1: function(index, layero){
+			var loading = layer.load(2);
 			var body = layer.getChildFrame('body', index);
 			var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
 			var inputs=body.find('input');
@@ -169,6 +191,7 @@ function applyFriendLinks(){
 					'siteImgUrl':siteImgUrl
 				},
 				success:function(resp){
+					layer.close(loading);
 					if (resp.code == "200") {
 						layer.msg("申请成功", {
 							icon: 6
