@@ -18,7 +18,7 @@ layui.use(['element', 'jquery', 'laytpl', 'layer', 'layedit', 'flow', 'form', 'c
 	deptObjs[0].style.fontSize = "12px";
 	deptObjs[0].style.padding = "4px";
 	deptObjs[0].style.background = "white";
-	var connection = new signalR.HubConnectionBuilder().withUrl("http://111.229.211.248:5004/SingalrClient").build();
+	var connection = new signalR.HubConnectionBuilder().withUrl("http://127.0.0.1:5004/SingalrClient").build();
     connection.on('AllReviceMesage',function(reviceMessage){
         var data = {
             'list': reviceMessage.data
