@@ -134,7 +134,6 @@ function loadFriendLink(){
 		'type':'get',
 		'dataType':'json',
 		success:function(resp){
-			layer.close(loading);
 			if (resp.code == "200") {
 				for(var i=0;i<resp.data.length;i++){
 					var friendLinkHtml="<dd>"+
