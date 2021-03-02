@@ -137,7 +137,7 @@ function loadFriendLink(){
 			if (resp.code == "200") {
 				for(var i=0;i<resp.data.length;i++){
 					var friendLinkHtml="<dd>"+
-					"<a href='"+resp.data[i].link+"'>"+
+					"<a href='"+resp.data[i].link+"' target='_blank'>"+
 			        "<img src='"+resp.data[i].img+"'><i>"+resp.data[i].webName+"</i>"+
 					"</a>"+
 					"</dd>"
