@@ -38,7 +38,7 @@ layui.use(['element', 'form', 'layer', 'flow'], function () {
             });
         }
     });
-    $('#leaveMessage').click(function () {
+    $('#leaveMessageClick').click(function () {
         var email = $('#email').val();
         if (email != '') {
             var reg = new RegExp(
