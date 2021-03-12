@@ -68,24 +68,19 @@
                     'Password': RegisterData.password
                 };
                 $.ajax({
-                    url: url + "login/Logon",
+                    url: api + "/user/Logon",
                     type: "post",
-                    contentType: 'application/json; charset=utf-8',
+                    contentType: 'application/json;',
                     data: JSON.stringify(userModel),
                     datatype: 'json',
-                    beforeSend: function (xhr) {
-                        doBeforeSend(xhr);
-                    },
                     success: function (response) {
                         if (response.code == "200") {
-                            localStorage.setItem("token", response.data);
+                            localStorage.setItem("loginToken", response.data);
                             window.location.href = "../home/square.html";
 
                         } else {
                             layer.close(index)
-                            layer.msg(response.message, {
-                                icon: 4
-                            });
+                            layer.msg(response.message, {icon: 4});
                         }
                     },
                 });
