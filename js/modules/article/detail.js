@@ -36,8 +36,9 @@ function loadArticle(id) {
 					'content': response.data.content,
 					'authorName': response.data.authorName,
 					'authorAccount': response.data.authorAccount,
-					"reviewCount": response.data.reviewCount,
-					"readCount": response.data.readCount
+					'reviewCount': response.data.reviewCount,
+					'readCount': response.data.readCount,
+					'authorPhoto':response.data.authorPhoto
 				};
 				authorAccount= response.data.authorAccount;
 				revicer = response.data.authorAccount;
@@ -139,7 +140,6 @@ function reviewTo(toUser, commentId,index) {
     if(content==''){
         layer.msg("内容为空", {
             icon: 5,
-            offset: ['280px', '540px']
         });
         return false;
     }
