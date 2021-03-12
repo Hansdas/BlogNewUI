@@ -68,7 +68,7 @@
                     'Password': RegisterData.password
                 };
                 $.ajax({
-                    url: api + "/user/Logon",
+                    url: api + "/login/Logon",
                     type: "post",
                     contentType: 'application/json;',
                     data: JSON.stringify(userModel),
