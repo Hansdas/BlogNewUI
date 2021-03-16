@@ -31,7 +31,7 @@ function loadarticle(pageIndex, pageSize, initPage) {
             if (response.code == "200") {
 				for(var i=0;i<response.data.length;i++){
 					var galleryHtml='<dd>'+
-                    '<div class="imgdiv" style="height: 196px;">'+
+                    '<div class="imgdiv" style="height: 196px;width:196px">'+
                     '<img src="'+response.data[i].url+'">'+
                     '</div>'+
                     '</dd>'
