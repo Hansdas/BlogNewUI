@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="~/images/title.png" />
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202009071529" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        .layui-col-md8 {width: 100%;}
+        .imgdiv img {width: 80%; height: 80%;margin-left: 10%;margin-top: 10%; cursor: pointer;}
+        dl {position: relative;overflow: hidden;margin-left: 20px;text-align: center;font-size: 0;}
+        dd {position: relative;float:left; margin: 10px 25px 5px 0;display: inline-block;vertical-align: top;font-size: 12px;}
+        .over {position: fixed; left:0; top:0; width:100%; z-index:100;}
+        .tempContainer {position:fixed; width:100%; margin-right:0px; margin-left:0px; text-align:center; z-index:101;}
+    </style>
+</head>
+
+<body style="margin-top:0px !important">
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="fly-panel">
+                    <div class="fly-panel-title fly-filter" style="display:flex">
+                        <a>图库</a>
+                        <span style="display:flex;margin-top: 11px;">
+                            <a href="upload.html" target="_blank" class="layui-btn" title="上传图片"><i class="layui-icon layui-icon-upload"></i></a>
+                        </span>
+                    </div>
+                    <div style="min-height: 500px;">
+                        <dl class="amplifyImg">
+                        </dl>
+                    <div class="over"></div>
+                    <div id="page" style="text-align: center;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/const.js?v=202101040950"></script>
+    <script src="/js/utils.js?v=202102021616"></script>
+    <script src="/js/modules/gallery/gallery.js"></script>
+</body>
+
+</html>

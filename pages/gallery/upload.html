@@ -1,0 +1,140 @@
+<head>
+    <meta charset="utf-8">
+    <link href="/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="/lib/layui/css/global.css?v=202008311553" rel="stylesheet" />
+    <link href="/css/main.css?v=202009071529" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <style>
+        html {
+            background-color: white;
+        }
+
+        html body {
+            margin-top: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-upload">
+        <button type="button" class="layui-btn" id="chooseFile"> 选择图片<i
+                class="layui-icon layui-icon-picture"></i></button>
+        <button type="button" class="layui-btn" id="uploadList">开始上传<i
+                class="layui-icon layui-icon-upload"></i></button>
+        <div class="layui-upload-list">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>大小</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="fileList"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/js/jquery/jquery.min.js"></script>
+    <script src="/js/const.js?v=202101040950"></script>
+    <script src="/js/utils.js?v=202102021616"></script>
+    <script>
+        layui.use(['upload', 'element', 'layer'], function () {
+            var $ = layui.jquery, upload = layui.upload, element = layui.element, layer = layui.layer;
+            var account = '';
+            $.ajax({
+                url: api + '/user/loginuser',
+                type: 'get',
+                dataType: 'json',
+                async: true,
+                headers: {loginToken: localStorage.getItem('loginToken')},
+                success: function (res) {
+                    if (res.code == "200") {
+                        account = res.data.account;
+                    }
+                    else {
+                        layer.msg('未登录', { icon: 7 });
+                        $('#chooseFile').attr('disabled', true);
+                        $('#uploadList').attr('disabled', true);
+                    }
+
+                }
+            });
+            //多文件列表示例
+            var listView = $('#fileList')
+                , uploadListIns = upload.render({
+                    elem: '#chooseFile'
+                    , url: api + "/file/upload/images"
+                    , accept: 'file'
+                    , multiple: true
+                    , auto: false
+                    , size: 500
+                    , exts: 'jpg|png'
+                    , bindAction: '#uploadList'
+                    , before: function () {
+                        uploadIndex = layer.msg('上传中,请稍后...', { time: 0, icon: 16, shade: 0.01 })
+                    }, allDone: function (obj) {
+                        if (uploadIndex) {
+                            layer.close(uploadIndex);
+                        }
+                    }
+                    , choose: function (obj) {
+                        var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                        //读取本地文件
+                        obj.preview(function (index, file, result) {
+                            var tr = $(['<tr id="upload-' + index + '">'
+                                , '<td>' + file.name + '</td>'
+                                , '<td>' + (file.size / 1024).toFixed(1) + 'kb</td>'
+                                , '<td>等待上传</td>'
+                                , '<td>'
+                                , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                                , '<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                                , '</td>'
+                                , '</tr>'].join(''));
+
+                            //单个重传
+                            tr.find('.demo-reload').on('click', function () {
+                                obj.upload(index, file);
+                            });
+
+                            //删除
+                            tr.find('.demo-delete').on('click', function () {
+                                delete files[index]; //删除对应的文件
+                                tr.remove();
+                                uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                            });
+
+                            listView.append(tr);
+                        });
+                    }
+                    , done: function (res, index, upload) {
+                        if (res.data.code == '200') { //上传成功
+                            var tr = listView.find('tr#upload-' + index)
+                                , tds = tr.children();
+                            tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                            tds.eq(3).html(''); //清空操作
+                            $.ajax({
+                                url: api + '/gallery/upload',
+                                type: 'post',
+                                dataType: 'json',
+                                data: {
+                                    'url': res.data.url,
+                                    'account': account
+                                }
+                            });
+                            return delete this.files[index]; //删除文件队列已经上传成功的文件
+                        }
+                        this.error(index, upload);
+                    }
+                    , error: function (index, upload) {
+                        var tr = listView.find('tr#upload-' + index)
+                            , tds = tr.children();
+                        tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                        tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+                    }
+                });
+
+        });
+    </script>
+</body>
